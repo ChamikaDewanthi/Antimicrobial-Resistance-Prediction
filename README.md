@@ -6,7 +6,7 @@ This project develops a machine learning pipeline to predict antibiotic suscepti
 
 The project combines microbiology culture records with relevant patient, clinical, and prior antimicrobial exposure information to construct a dataset for binary classification.
 
-The main objective is to evaluate machine learning models in identifying resistant cases and compare their predictive performance, with particular attention to the minority resistant class.
+The main objective is to evaluate machine learning models in identifying resistant cases and compare their predictive performance.
 
 ## Dataset
 
@@ -30,10 +30,10 @@ The preprocessing workflow includes:
 
 1. Loading and inspecting the source datasets.
 2. Checking data types, missing values, duplicate records, and key consistency.
-3. Standardising numerical and categorical values.
+3. Standardizing numerical and categorical values.
 4. Aggregating supporting datasets to the appropriate culture-event grain before merging.
 5. Merging relevant source tables and validating the resulting dataset.
-6. Removing or excluding invalid and conflicting target records according to the documented cleaning rules.
+6. Removing or excluding invalid and conflicting target records.
 7. Handling missing numerical values using median imputation and missing categorical values using an `Unknown` category, where applicable.
 8. Retaining identifiers for data integration and validation while excluding them from model predictors.
 9. Splitting the dataset by patient to reduce the risk of patient-level data leakage.
@@ -53,21 +53,21 @@ Random Forest combines multiple decision trees to predict antibiotic susceptibil
 
 ### CatBoost
 
-CatBoost is a gradient-boosted decision tree algorithm that can handle categorical features directly when configured appropriately. It is evaluated as a more flexible model capable of capturing nonlinear relationships and interactions.
+CatBoost is a gradient-boosted decision tree algorithm that can handle categorical features directly when configured appropriately. It is considered a more flexible model that can capture nonlinear relationships and interactions.
 
 ## Model Evaluation
 
 Model performance is assessed using the following metrics:
 
-- **Macro AUROC:** Measures discrimination across the two classes.
-- **Macro AUPRC:** Evaluates precision–recall performance across classes.
-- **Balanced Accuracy:** Gives equal weight to the recall of each class.
-- **Precision:** Measures how many predicted cases are actually accurate.
-- **Recall:** Measures how many actual cases are correctly identified.
-- **F1-Score:** Summarises the balance between precision and recall.
-- **Brier Score:** Measures the accuracy of predicted probabilities, where lower values indicate better probability predictions.
-- **Confusion Matrix:** Summarises the model’s predictions by showing the numbers of true positives, true negatives, false positives, and false negatives.
-- **Calibration Plot:** Compares predicted resistance probabilities with observed resistance frequencies.
+- **Macro AUROC:** Measures the model's ability to distinguish between the two outcome classes.
+- **Macro AUPRC:** Summarizes precision–recall performance.
+- **Balanced Accuracy:** Calculates the average recall across the two classes.
+- **Precision:** Measures the proportion of predicted positive cases that are correct.
+- **Recall:** Measures the proportion of actual positive cases that are correctly identified.
+- **F1-Score:** Summarizes the balance between precision and recall.
+- **Brier Score:** Measures the accuracy of predicted probabilities, with lower values indicating better probability predictions.
+- **Confusion Matrix:** Summarizes correct and incorrect predictions for each class.
+- **Calibration Plot:** Compares predicted probabilities with observed outcome frequencies.
 
 ## Project Execution
 
