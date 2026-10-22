@@ -8,13 +8,14 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.ensemble import RandomForestClassifier
 #from imblearn.pipeline import Pipeline
 #from imblearn.under_sampling import RandomUnderSampler
+from get_directory import get_directory
 
 def train_random_forest_model():
     try:
         print("Training random forest model...")
 
         # Loads training dataset
-        df = pd.read_csv("results/training_dataset.csv")
+        df = pd.read_csv(get_directory("training_dataset.csv", "results"), low_memory = False)
 
         # Separates features (X) and target (y)
         X_train = df.drop(columns = ["susceptibility"])

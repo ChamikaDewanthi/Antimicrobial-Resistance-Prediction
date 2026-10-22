@@ -2,12 +2,13 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from clean_data import fill_null_values
+from get_directory import get_directory
 
 def split_dataset():
     try:
         # Loads the merged file
         print("Loading processed dataset...")
-        df = pd.read_csv("results/final_dateset.csv", low_memory = False)
+        df = pd.read_csv(get_directory("final_dateset.csv", "results"), low_memory = False)
 
         # Splits the dataset into training and testing datasets
         print("Splitting into training and testing datasets...")

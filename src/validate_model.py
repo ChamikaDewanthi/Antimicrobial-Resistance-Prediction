@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import joblib
-from catboost import CatBoostClassifier
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import (
@@ -15,12 +14,13 @@ from sklearn.metrics import (
     confusion_matrix
 )
 from sklearn.calibration import calibration_curve
+from get_directory import get_directory
 
 def validate_model(model_file, model_name):
     try:
         # Loads trained model and testing dataset
         model = joblib.load(model_file)
-        df = pd.read_csv("results/testing_dataset.csv")
+        df = pd.read_csv(get_directory("testing_dataset.csv", "results"), low_memory = False)
 
         # Separates features and actual labels
         y_test = (

@@ -5,6 +5,7 @@ from get_file import get_file
 from clean_data import clean_data
 from clean_data import remove_duplicates
 from clean_data import remove_identifiers
+from get_directory import get_directory
 
 def prepare_dataset():
     try:
@@ -16,7 +17,8 @@ def prepare_dataset():
         # Loads the main file
         print("Loading main dataset...")
         main_columns = ["anon_id", "pat_enc_csn_id_coded", "order_proc_id_coded", "ordering_mode", "culture_description", "organism", "antibiotic", "susceptibility"]
-        main_file = get_main_file("data/microbiology_cultures_cohort.csv", main_columns)
+        main_path = get_directory("microbiology_cultures_cohort.csv", "data")
+        main_file = get_main_file(main_path, main_columns)
         print("\033[92mMain dataset is successfully loaded\033[0m")
 
         file_names = []
@@ -27,11 +29,11 @@ def prepare_dataset():
         file_names.append("antibiotic_class_exposure")
 
         file_paths = []
-        file_paths.append("data/microbiology_cultures_demographics.csv")
-        file_paths.append("data/microbiology_culture_prior_infecting_organism.csv")
-        #file_paths.append("data/microbiology_cultures_labs.csv")
-        file_paths.append("data/microbiology_cultures_vitals.csv")
-        file_paths.append("data/microbiology_cultures_antibiotic_class_exposure.csv")
+        file_paths.append(get_directory("microbiology_cultures_demographics.csv", "data"))
+        file_paths.append(get_directory("microbiology_culture_prior_infecting_organism.csv", "data"))
+        #file_paths.append(get_directory("microbiology_cultures_labs.csv", "data"))
+        file_paths.append(get_directory("microbiology_cultures_vitals.csv", "data"))
+        file_paths.append(get_directory("microbiology_cultures_antibiotic_class_exposure.csv", "data"))
 
         columns_list = []
         columns_list.append(["anon_id", "age", "gender"])

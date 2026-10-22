@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import joblib
 
+from get_directory import get_directory
+
 def predict_case(model_file):
     try:
         # Loads trained model
@@ -98,13 +100,16 @@ def main():
             try:
                 modelNum = int(value)                
                 if modelNum == 1:
-                    predict_case("results/logistic_regression_model.joblib")
+                    #predict_case("results/logistic_regression_model.joblib")
+                    predict_case(get_directory("logistic_regression_model.joblib", "results"))
                     break
                 elif modelNum == 2:
-                    predict_case("results/random_forest_model.joblib")
+                    #predict_case("results/random_forest_model.joblib")
+                    predict_case(get_directory("random_forest_model.joblib", "results"))
                     break
                 elif modelNum == 3:
-                    predict_case("results/catboost_model.joblib")
+                    #predict_case("results/catboost_model.joblib")
+                    predict_case(get_directory("catboost_model.joblib", "results"))
                     break
                 else:
                     print("Please enter a valid number")

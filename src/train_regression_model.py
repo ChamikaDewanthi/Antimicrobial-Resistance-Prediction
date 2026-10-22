@@ -8,13 +8,14 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.impute import SimpleImputer
 #from imblearn.pipeline import Pipeline
 #from imblearn.under_sampling import RandomUnderSampler
+from get_directory import get_directory
 
 def train_regression_model():
     try:
         print("Training regression model...")
         
         # Loads training dataset
-        df = pd.read_csv("results/training_dataset.csv", low_memory = True)
+        df = pd.read_csv(get_directory("training_dataset.csv", "results"), low_memory = False)
 
         # Separates features (X) and target (y)
         X_train = df.drop(columns = ["susceptibility"])

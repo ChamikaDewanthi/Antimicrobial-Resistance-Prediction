@@ -5,13 +5,14 @@ from sklearn.pipeline import Pipeline
 from catboost import CatBoostClassifier
 #from imblearn.under_sampling import RandomUnderSampler
 #from imblearn.pipeline import Pipeline
+from get_directory import get_directory
 
 def train_catboost_model():
     try:
         print("Training CatBoost model...")
         
         # Loads training dataset
-        df = pd.read_csv("results/training_dataset.csv", low_memory = False)
+        df = pd.read_csv(get_directory("training_dataset.csv", "results"), low_memory = False)
 
         # Separates features (X) and target (y)
         X_train = df.drop(columns = ["susceptibility"]).copy()
