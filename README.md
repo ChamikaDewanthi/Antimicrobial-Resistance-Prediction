@@ -78,3 +78,13 @@ Model performance is assessed using the following metrics:
 5. Update any dataset paths or configuration settings required by the project.
 6. Execute main.py to run the configured data preprocessing, model training, and evaluation workflows.
 7. Refer to the results directory for the merged and final datasets, evaluation metrics, calibration plots, and saved models.
+
+## Single-Case Prediction
+
+Once main.py is successfully executed and the three trained models are available in the results directory, a prediction can be made for an individual case using predict_case.py.
+
+1. Execute predict_case.py.
+2. Select one of the available trained models when prompted.
+3. Enter the required values for each feature when prompted.
+4. The selected trained model processes the provided inputs and generates a prediction for the case.
+5. The prediction result is displayed in the console.
